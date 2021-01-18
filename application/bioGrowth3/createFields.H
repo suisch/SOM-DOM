@@ -160,6 +160,11 @@ dimensionedTensor D_CO2
     transportProperties.lookup("D_Co2")
 );
 
+dimensionedScalar kD_SOMDOM
+(
+    transportProperties.lookup("kD_SOMDOM")
+);
+
 /*dimensionedTensor D_mAE
 (
     transportProperties.lookup("D_mAE")
