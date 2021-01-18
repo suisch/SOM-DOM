@@ -1,0 +1,2 @@
+LOCAL_OBJECTS = \
+bioGrowth3.o

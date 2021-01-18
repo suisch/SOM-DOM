@@ -1,0 +1,9 @@
+{
+    "C_Cpp.intelliSenseEngine": "Tag Parser",
+    "files.associations": {
+        "Test-vector.C": "cpp",
+        "vector": "cpp",
+        "bioGrowth3.C": "cpp",
+        "reactingWallFvPatchScalarField.C": "cpp"
+    }
+}

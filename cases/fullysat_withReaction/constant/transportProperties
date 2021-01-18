@@ -1,0 +1,45 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | foam-extend: Open Source CFD                    |
+|  \\    /   O peration     | Version:     4.0                                |
+|   \\  /    A nd           | Web:         http://www.foam-extend.org         |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      transportProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+DA DA [ 0 2 -1 0 0 0 0 ] 1e-7;
+DT DT [ 0 2 -1 0 0 0 0 ] (2.8935e-8 0 0 0 2.8935e-8 0 0 0 2.8935e-8);
+DO2 DO2 [ 0 2 -1 0 0 0 0 ] 1e-7;
+
+solutionSpecies
+{
+	T
+	{
+		D D [ 0 2 -1 0 0 0 0 ] 1e-7;
+	}
+};
+
+surfaceSpecies
+{
+	Surf_w;
+	Surf_wT;
+};
+
+surfaceMasters
+{
+    Surf_w;
+}
+
+
+transportModel  Newtonian;
+
+nu              [0 2 -1 0 0 0 0] 1e-05;
+// ************************************************************************* //
