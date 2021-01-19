@@ -66,7 +66,7 @@
 	// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 	double celli = 0;
 	
-	forAll(A.boundaryField(), patchi)
+	forAll(C_glu.boundaryField(), patchi)
 	{
 		if (Surf.boundaryField()[patchi].type()=="reactingWall")
 		{	
@@ -78,8 +78,8 @@
 				double C_DOM_temp = C_DOM[celli];
 				double C_SOM_temp = C_SOM[celli];
 
-				C_DOM[celli] = kD_SOMDOM/(1+kD_SOMDOM)*(C_DOM_temp + C_SOM_temp);
-				C_SOM[celli] = 1/(1+kD_SOMDOM)*(C_DOM_temp + C_SOM_temp);
+				C_DOM[celli] = kD_SOMDOM.value()/(1+kD_SOMDOM.value())*(C_DOM_temp + C_SOM_temp);
+				C_SOM[celli] = 1/(1+kD_SOMDOM.value())*(C_DOM_temp + C_SOM_temp);
 
 				delete C_DOM_temp, C_SOM_temp;
 
