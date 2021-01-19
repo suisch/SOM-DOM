@@ -70,7 +70,7 @@
 	{
 		if (Surf.boundaryField()[patchi].type()=="reactingWall")
 		{	
-			const labelList& cellOwner = A.boundaryField()[patchi].patch().faceCells();
+			const labelList& cellOwner = C_glu.boundaryField()[patchi].patch().faceCells();
 			
 			forAll(A.boundaryField()[patchi], facei)
 			{
