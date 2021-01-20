@@ -1,3 +1,0 @@
-surfaceArea.C
-
-EXE = $(FOAM_USER_APPBIN)/surfaceArea
