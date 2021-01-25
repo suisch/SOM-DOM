@@ -32,7 +32,7 @@ volScalarField C_glu
 (
     IOobject
     (
-	"AC_glu",
+	"C_glu",
 	runTime.timeName(),
         mesh,
         IOobject::MUST_READ,
