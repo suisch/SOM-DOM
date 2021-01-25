@@ -157,7 +157,7 @@ dimensionedTensor D_O2
 
 dimensionedTensor D_CO2
 (
-    transportProperties.lookup("D_Co2")
+    transportProperties.lookup("D_CO2")
 );
 
 dimensionedScalar kD_SOMDOM
