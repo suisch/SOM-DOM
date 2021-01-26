@@ -143,8 +143,8 @@
 
 				C_glu[celli]    = concentrationTemp_[0];//mol/m3
 				C_DOM[celli]    = concentrationTemp_[1];//mol/m3
-				C_O2[celli]     = concentrationTemp_[2];//mol/m3
-				C_CO2[celli]    = concentrationTemp_[3];//mol/m3
+				C_O2[celli]     += concentrationTemp_[2];//mol/m3
+				C_CO2[celli]    += concentrationTemp_[3];//mol/m3
 				C_mAE[celli]    = concentrationTemp_[4];//mol/m3
 				C_mF1[celli]    = concentrationTemp_[5];//mol/m3
 				C_mF2[celli]    = concentrationTemp_[5];//mol/m3
