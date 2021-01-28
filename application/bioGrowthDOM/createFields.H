@@ -32,7 +32,7 @@ volScalarField C_glu
 (
     IOobject
     (
-	"AC_glu",
+	"C_glu",
 	runTime.timeName(),
         mesh,
         IOobject::MUST_READ,
@@ -157,7 +157,7 @@ dimensionedTensor D_O2
 
 dimensionedTensor D_CO2
 (
-    transportProperties.lookup("D_Co2")
+    transportProperties.lookup("D_CO2")
 );
 
 dimensionedScalar kD_SOMDOM

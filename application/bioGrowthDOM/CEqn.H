@@ -66,22 +66,23 @@
 	// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 	double celli = 0;
 	
-	forAll(A.boundaryField(), patchi)
+	forAll(C_glu.boundaryField(), patchi)
 	{
 		if (Surf.boundaryField()[patchi].type()=="reactingWall")
 		{	
-			const labelList& cellOwner = A.boundaryField()[patchi].patch().faceCells();
+			const labelList& cellOwner = C_glu.boundaryField()[patchi].patch().faceCells();
 			
-			forAll(A.boundaryField()[patchi], facei)
+			forAll(C_glu.boundaryField()[patchi], facei)
 			{
 				//Equilibrium reaction for SOM-DOM
 				double C_DOM_temp = C_DOM[celli];
 				double C_SOM_temp = C_SOM[celli];
 
-				C_DOM[celli] = kD_SOMDOM/(1+kD_SOMDOM)*(C_DOM_temp + C_SOM_temp);
-				C_SOM[celli] = 1/(1+kD_SOMDOM)*(C_DOM_temp + C_SOM_temp);
+				C_DOM[celli] = kD_SOMDOM.value()/(1+kD_SOMDOM.value())*(C_DOM_temp + C_SOM_temp);
+				C_SOM[celli] = 1/(1+kD_SOMDOM.value())*(C_DOM_temp + C_SOM_temp);
 
-				delete C_DOM_temp, C_SOM_temp;
+				C_DOM_temp = NULL;
+				C_SOM_temp = NULL;
 
 				double time_step = runTime.deltaT().value();
 				celli = cellOwner[facei];
@@ -142,8 +143,8 @@
 
 				C_glu[celli]    = concentrationTemp_[0];//mol/m3
 				C_DOM[celli]    = concentrationTemp_[1];//mol/m3
-				C_O2[celli]     = concentrationTemp_[2];//mol/m3
-				C_CO2[celli]    = concentrationTemp_[3];//mol/m3
+				C_O2[celli]     += concentrationTemp_[2];//mol/m3
+				C_CO2[celli]    += concentrationTemp_[3];//mol/m3
 				C_mAE[celli]    = concentrationTemp_[4];//mol/m3
 				C_mF1[celli]    = concentrationTemp_[5];//mol/m3
 				C_mF2[celli]    = concentrationTemp_[5];//mol/m3
