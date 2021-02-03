@@ -1,0 +1,75 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | foam-extend: Open Source CFD                    |
+|  \\    /   O peration     | Version:     4.0                                |
+|   \\  /    A nd           | Web:         http://www.foam-extend.org         |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      transportProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+D_glu D_glu [ 0 2 -1 0 0 0 0 ] 1e-7;
+D_DOM D_DOM [ 0 2 -1 0 0 0 0 ] (2.8935e-8 0 0 0 2.8935e-8 0 0 0 2.8935e-8);
+D_O2 D_O2 [ 0 2 -1 0 0 0 0 ] 1e-7;
+D_CO2 D_CO2 [ 0 2 -1 0 0 0 0 ] 1e-7;
+kD_SOMDOM kD_SOMDOM [ 0 0 0 0 0 0 0 ] 1e-4;
+
+solutionSpecies
+{
+	C_glu
+	{
+		D1 D1 [ 0 2 -1 0 0 0 0 ] 1e-9;
+		D2 D2 [ 0 2 -1 0 0 0 0 ] 1e-9;
+		H H [ 0 0 0 0 0 0 0 ] 1e-4;
+                Mw Mw [1 0 0 0 -1 0 0] 1;
+	}
+
+	C_DOM
+	{
+		D1 D1 [ 0 2 -1 0 0 0 0 ] 1e-9;
+		D2 D2 [ 0 2 -1 0 0 0 0 ] 1e-9;
+		H H [ 0 0 0 0 0 0 0 ] 1e-4;
+                Mw Mw [1 0 0 0 -1 0 0] 1;
+	}
+
+	C_O2
+	{
+		D1 D1 [ 0 2 -1 0 0 0 0 ] 1e-9;
+		D2 D2 [ 0 2 -1 0 0 0 0 ] 1e-9;
+		H H [ 0 0 0 0 0 0 0 ] 1e-4;
+                Mw Mw [1 0 0 0 -1 0 0] 1;
+	}
+
+
+	C_CO2
+	{
+		D1 D1 [ 0 2 -1 0 0 0 0 ] 1e-9;
+		D2 D2 [ 0 2 -1 0 0 0 0 ] 1e-9;
+		H H [ 0 0 0 0 0 0 0 ] 1e-4;
+                Mw Mw [1 0 0 0 -1 0 0] 1;
+	}
+};
+
+surfaceSpecies
+{
+	Surf_w;
+	Surf_wT;
+};
+
+surfaceMasters
+{
+    Surf_w;
+}
+
+
+transportModel  Newtonian;
+
+nu              [0 2 -1 0 0 0 0] 1e-05;
+// ************************************************************************* //
