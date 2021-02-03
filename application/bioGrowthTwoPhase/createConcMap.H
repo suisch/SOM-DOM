@@ -183,3 +183,82 @@ dimensionedScalar kD_SOMDOM
 (
     transportProperties.lookup("kD_SOMDOM")
 );
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+/*
+Info << "Reading microbial species dictionary" << endl;
+const dictionary& microbialSpeciesDict = twoPhaseProperties.subDict("microbialSpecies");
+Info << "Reading microbial species name\n" << endl;
+speciesTable microbialSpecies
+(
+	microbialSpeciesDict.toc()
+);
+
+Info << "Create composition vector\n" << endl;
+PtrList<volScalarField> M(microbialSpecies.size());
+
+forAll(microbialSpecies, i)
+{
+	IOobject header
+	(
+		microbialSpecies[i],
+		mesh.time().timeName(),
+		mesh,
+		IOobject::NO_READ
+	);
+
+	// check if field exists and can be read
+	if (header.headerOk())
+	{
+		Y.set
+		(
+			i,
+			new volScalarField
+			(
+				IOobject
+				(
+					microbialSpecies[i],
+					mesh.time().timeName(),
+					mesh,
+					IOobject::MUST_READ,
+					IOobject::AUTO_WRITE
+				),
+				mesh
+			)
+		);
+	}
+	else
+	{
+		volScalarField Ydefault
+		(
+			IOobject
+			(
+				"Ydefault",
+				mesh.time().timeName(),
+				mesh,
+				IOobject::MUST_READ,
+				IOobject::NO_WRITE
+			),
+			mesh
+		);
+
+		Y.set
+		(
+			i,
+			new volScalarField
+			(
+				IOobject
+				(
+					microbialSpecies[i],
+					mesh.time().timeName(),
+					mesh,
+					IOobject::NO_READ,
+					IOobject::AUTO_WRITE
+				),
+				Ydefault
+			)
+		);
+	}
+	mesh.schemesDict().setFluxRequired(microbialSpecies[i]);
+}
+*/

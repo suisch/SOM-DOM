@@ -114,7 +114,7 @@ volScalarField C_CO2
         IOobject::AUTO_WRITE
     ),
     mesh
-);
+);*/
 
 Info << "Reading component C_SOM" << endl;
 volScalarField C_SOM
@@ -170,7 +170,7 @@ volScalarField C_mF2
         IOobject::AUTO_WRITE
     ),
     mesh
-); */
+); 
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
