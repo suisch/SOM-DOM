@@ -60,7 +60,7 @@ IOdictionary transportProperties
     
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-Info << "Reading component C_glu" << endl;
+/*Info << "Reading component C_glu" << endl;
 volScalarField C_glu
 (
     IOobject
@@ -170,7 +170,7 @@ volScalarField C_mF2
         IOobject::AUTO_WRITE
     ),
     mesh
-);
+); */
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -204,7 +204,7 @@ surfaceScalarField phiD
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensionedTensor D_glu
+/*dimensionedTensor D_glu
 (
     transportProperties.lookup("D_glu")
 );
@@ -227,7 +227,7 @@ dimensionedTensor D_CO2
 dimensionedScalar kD_SOMDOM
 (
     transportProperties.lookup("kD_SOMDOM")
-);
+);*/
 
 /*dimensionedTensor D_mAE
 (
@@ -286,6 +286,8 @@ volScalarField Surf
 );
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+#include "createConcMap.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

@@ -1,8 +1,5 @@
 {
 
-	Info << "Reading compressive flux coefficient\n" << endl;	
-    scalar cYi(readScalar(mesh.solutionDict().subDict("PISO").lookup("cYi")));
-
 	//Transport step
 	Info << "transport step" << endl;
 	word alpharScheme("div(phirb,alpha)");
@@ -108,19 +105,9 @@
 		Y2i = HYi*Yi/(alpha1+HYi*(1-alpha1));
 	}
     //reaction step
-    Info << "reaction step" << endl;
-    rm->reactionStep();
 
-	//compute Yi from Y1i and Y2i
-	forAll(solutionSpecies, i)
-	{
-		volScalarField& Yi = Y[i];
-		volScalarField& Y1i = Y1[i];
-		volScalarField& Y2i = Y2[i];
-		Yi = Y1i*alpha1 + Y2i*(1-alpha1);
-	}
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-    fvScalarMatrix C_gluEqn
+/*    fvScalarMatrix C_gluEqn
     (
 	fvm::ddt(C_glu)
 	+ fvm::div(phi, C_glu, "div(phi,C)")
@@ -154,7 +141,7 @@
 	- fvm::laplacian(D_CO2, C_CO2, "laplacian(C)")
     );
 
-    C_CO2Eqn.solve();
+    C_CO2Eqn.solve();*/
 
 /*    fvScalarMatrix C_mAEEqn
     (
