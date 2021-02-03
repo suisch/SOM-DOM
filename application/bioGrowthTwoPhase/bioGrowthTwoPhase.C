@@ -36,7 +36,7 @@ Description
 #include "speciesTable.H"
 #include "upwind.H"
 #include "downwind.H"
-
+#include "MULES.H"
 #include "twoPhaseMixture.H"
 
 #include "reactingWallFvPatchScalarField.C"
