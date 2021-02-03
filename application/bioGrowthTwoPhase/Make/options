@@ -17,6 +17,6 @@ EXE_LIBS = \
     -lsampling \
     -lopenblas \
     -lspecie \
-    -llduSolvers
+    -llduSolvers \
     -lgfortran\
     $(FOAM_USER_LIBBIN)/bioGrowthDOM.so
