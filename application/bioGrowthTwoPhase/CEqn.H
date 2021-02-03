@@ -172,7 +172,7 @@
 	// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 	double celli = 0;
 	
-	forAll(C_glu.boundaryField(), patchi)
+	/*forAll(C_glu.boundaryField(), patchi)
 	{
 		if (Surf.boundaryField()[patchi].type()=="reactingWall")
 		{	
@@ -217,7 +217,7 @@
 				cout << "concentration bio = " << concentrationTemp_[3] << endl;*/
 
 				// Run BRNS;
-				invokebrns_
+				/*invokebrns_
 				(
 					concentrationTemp_,
 					concentrationTemp_,
@@ -232,7 +232,7 @@
 					&porosity,
 					&waterSaturation,
 					NULL
-				);
+				);*/
 
 				/*if (concentrationTemp_[2] > 1e-20)
 				{ 
@@ -245,7 +245,7 @@
 				else
 				{
 					C[celli] = 0;
-				}*/
+				}
 
 				C_glu[celli]    = concentrationTemp_[0];//mol/m3
 				C_DOM[celli]    = concentrationTemp_[1];//mol/m3
@@ -257,6 +257,6 @@
 
 			}
 		}
-	}		
+	}	*/	
 }
 
