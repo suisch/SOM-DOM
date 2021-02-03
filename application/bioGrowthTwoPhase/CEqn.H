@@ -198,7 +198,7 @@
 				int iCounter = 0;
 				forAll(solutionSpecies, i)
 				{
-					concentrationTemp_[iCounter] = Y[i];
+					concentrationTemp_[iCounter] = Y[i][celli];
 					iCounter += 1;
 				}
 				iCounter = NULL;
