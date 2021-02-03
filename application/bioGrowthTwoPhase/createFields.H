@@ -13,27 +13,60 @@ volVectorField U
     mesh
 );
 
-#include "createPhi.H"
+Info<< "Reading field alpha1\n" << endl;
+volScalarField alpha1
+(
+    IOobject
+    (
+        "alpha1",
+        runTime.timeName(),
+        mesh,
+        IOobject::MUST_READ,
+        IOobject::AUTO_WRITE
+    ),
+    mesh
+);
+    
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+Info<< "Reading/calculating face flux field phi\n" << endl;
+
+surfaceScalarField phi
+(
+    IOobject
+    (
+        "phi",
+        runTime.timeName(),
+        mesh,
+        IOobject::READ_IF_PRESENT,
+        IOobject::AUTO_WRITE
+    ),
+    linearInterpolate(U) & mesh.Sf()
+);
+    
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 IOdictionary transportProperties
 (
     IOobject
     (
-	"transportProperties",
-	runTime.constant(),
-	mesh,
-	IOobject::MUST_READ,
+	    "transportProperties",
+	    runTime.constant(),
+	    mesh,
+	    IOobject::MUST_READ,
         IOobject::NO_WRITE
     )
 );
+    
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 Info << "Reading component C_glu" << endl;
 volScalarField C_glu
 (
     IOobject
     (
-	"C_glu",
-	runTime.timeName(),
+	    "C_glu",
+	    runTime.timeName(),
         mesh,
         IOobject::MUST_READ,
         IOobject::AUTO_WRITE
@@ -46,8 +79,8 @@ volScalarField C_DOM
 (
     IOobject
     (
-	"C_DOM",
-	runTime.timeName(),
+	    "C_DOM",
+	    runTime.timeName(),
         mesh,
         IOobject::MUST_READ,
         IOobject::AUTO_WRITE
@@ -60,8 +93,8 @@ volScalarField C_O2
 (
     IOobject
     (
-	"C_O2",
-	runTime.timeName(),
+	    "C_O2",
+	    runTime.timeName(),
         mesh,
         IOobject::MUST_READ,
         IOobject::AUTO_WRITE
@@ -74,8 +107,8 @@ volScalarField C_CO2
 (
     IOobject
     (
-	"C_CO2",
-	runTime.timeName(),
+	    "C_CO2",
+	    runTime.timeName(),
         mesh,
         IOobject::MUST_READ,
         IOobject::AUTO_WRITE
@@ -88,8 +121,8 @@ volScalarField C_SOM
 (
     IOobject
     (
-	"C_SOM",
-	runTime.timeName(),
+	    "C_SOM",
+	    runTime.timeName(),
         mesh,
         IOobject::MUST_READ,
         IOobject::AUTO_WRITE
@@ -102,8 +135,8 @@ volScalarField C_mAE
 (
     IOobject
     (
-	"C_mAE",
-	runTime.timeName(),
+	    "C_mAE",
+	    runTime.timeName(),
         mesh,
         IOobject::MUST_READ,
         IOobject::AUTO_WRITE
@@ -116,8 +149,8 @@ volScalarField C_mF1
 (
     IOobject
     (
-	"C_mF1",
-	runTime.timeName(),
+	    "C_mF1",
+	    runTime.timeName(),
         mesh,
         IOobject::MUST_READ,
         IOobject::AUTO_WRITE
@@ -130,8 +163,8 @@ volScalarField C_mF2
 (
     IOobject
     (
-	"C_mF2",
-	runTime.timeName(),
+	    "C_mF2",
+	    runTime.timeName(),
         mesh,
         IOobject::MUST_READ,
         IOobject::AUTO_WRITE
@@ -139,6 +172,37 @@ volScalarField C_mF2
     mesh
 );
 
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+surfaceScalarField phiD
+	(
+		IOobject
+		(
+			"phiD",
+			runTime.timeName(),
+			mesh,
+			IOobject::NO_READ,
+			IOobject::NO_WRITE
+		),
+		mesh,
+		dimensionedScalar("phiD", dimMass/dimTime, 0.0)
+	); 
+
+	volScalarField Mflux
+	(
+		IOobject
+		(
+			"Mflux",
+			runTime.timeName(),
+			mesh,
+			IOobject::NO_READ,
+			IOobject::AUTO_WRITE
+		),
+		mesh,
+		dimensionedScalar("MFlux", dimMass/dimVolume/dimTime, 0.0)
+	);
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 dimensionedTensor D_glu
 (
@@ -179,43 +243,51 @@ dimensionedTensor D_mF2
 (
     transportProperties.lookup("D_mF2")
 );*/
-	// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-	
-	Info << "Reading surface masters dictionary" << endl;
-	wordList surfaceMastersNames;
-	if (transportProperties.found("surfaceMasters"))
-	{
-		const dictionary& surfacesDict = transportProperties.subDict("surfaceMasters");
-		Info << "Reading surface masters \n" << endl;
-		surfaceMastersNames = surfacesDict.toc();
-	}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+Info << "Reading surface masters dictionary" << endl;
+wordList surfaceMastersNames;
+if (transportProperties.found("surfaceMasters"))
+{
+    const dictionary& surfacesDict = transportProperties.subDict("surfaceMasters");
+    Info << "Reading surface masters \n" << endl;
+    surfaceMastersNames = surfacesDict.toc();
+}
 
 
-    speciesTable surfaceMasters
+speciesTable surfaceMasters
+(
+    surfaceMastersNames
+);
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+Info<< "Reading two-phase properties\n" << endl;
+twoPhaseMixture twoPhaseProperties(U, phi, "alpha1");
+
+Info<< "Building Interface instance\n" << endl;
+interfacePropertiesAR interface(alpha1, U, twoPhaseProperties);
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+
+Info<< "Reading field Surf\n" << endl;
+volScalarField Surf
+(
+    IOobject
     (
-    	surfaceMastersNames
-    );
-	
-	// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+        "Surf",
+        runTime.timeName(),
+        mesh,
+        IOobject::MUST_READ,
+        IOobject::AUTO_WRITE
+    ),
+    mesh
+);
 
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-	Info<< "Reading field Surf\n" << endl;
-    volScalarField Surf
-    (
-        IOobject
-        (
-            "Surf",
-            runTime.timeName(),
-            mesh,
-            IOobject::MUST_READ,
-            IOobject::AUTO_WRITE
-        ),
-        mesh
-    );
-	
-	// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
-	// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 	//std::ostringstream oss;
 	
