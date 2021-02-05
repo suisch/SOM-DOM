@@ -266,8 +266,8 @@ Info<< "Reading two-phase properties\n" << endl;
 twoPhaseMixture twoPhaseProperties(U, phi, "alpha1");
 
 Info<< "Building Interface instance\n" << endl;
-interfacePropertiesAR interface(alpha1, U, twoPhaseProperties);
-
+//interfacePropertiesAR interface(alpha1, U, twoPhaseProperties);
+interfaceProperties interface(alpha1, U, twoPhaseProperties);
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 

@@ -1,8 +1,8 @@
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
-| \\      /  F ield         | foam-extend: Open Source CFD                    |
-|  \\    /   O peration     | Version:     4.0                                |
-|   \\  /    A nd           | Web:         http://www.foam-extend.org         |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  dev                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
 FoamFile
@@ -15,7 +15,7 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-application     bioGrowth3;
+application     interTransportFoam;
 
 startFrom       latestTime;
 
@@ -23,13 +23,13 @@ startTime       0;
 
 stopAt          endTime;
 
-endTime         1;
+endTime         1000;
 
-deltaT          1e-7;
+deltaT          1e-8;
 
 writeControl    adjustableRunTime;
 
-writeInterval   1e-3;
+writeInterval   1;
 
 purgeWrite      0;
 
@@ -49,6 +49,9 @@ adjustTimeStep  yes;
 
 maxCo           0.1;
 
-maxDeltaT       1e-4;
+maxDeltaT       1e-2;
+
+//libs ("libboundaryConditions.so");
+
 
 // ************************************************************************* //

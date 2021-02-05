@@ -43,8 +43,9 @@ Description
 #include "reactingWallFvPatchScalarField.H"
 #include "wallGlobalCompositionFvPatchScalarField.C"
 #include "wallGlobalCompositionFvPatchScalarField.H"
-#include "interfacePropertiesAR.C"
-#include "interfacePropertiesAR.H"
+//#include "interfacePropertiesAR.C"
+//#include "interfacePropertiesAR.H"
+#include "interfaceProperties.H"
 
 using namespace std;
 
