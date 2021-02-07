@@ -177,13 +177,13 @@
 	// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 	double celli = 0;
 	
-	forAll(Y[0].boundaryField(), patchi)
+	forAll(C_mAE.boundaryField(), patchi)
 	{
 		if (Surf.boundaryField()[patchi].type()=="reactingWall")
 		{	
-			const labelList& cellOwner = Y[0].boundaryField()[patchi].patch().faceCells();
+			const labelList& cellOwner = C_mAE.boundaryField()[patchi].patch().faceCells();
 			
-			forAll(Y[0].boundaryField()[patchi], facei)
+			forAll(C_mAE.boundaryField()[patchi], facei)
 			{
 				//Equilibrium reaction for SOM-DOM
 				double C_DOM_temp = Y[1][celli];
