@@ -58,6 +58,7 @@
 
 		while (simple.correctNonOrthogonal())
 		{
+			int counterAmir = 1;
 			//compute Y equation
 			fvScalarMatrix YiEqn
 			(
@@ -77,6 +78,10 @@
 		    {
 				YiEqn.solve(mesh.solutionDict().solver("Yi"));
 			}
+
+			Info << "Counter= " << counterAmir << endl;
+
+			counterAmir += 1;
 		}
 
 		Info<< "Species concentration = "
@@ -106,8 +111,8 @@
 	}
     //reaction step
 
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-/*    fvScalarMatrix C_gluEqn
+ // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+ /*    fvScalarMatrix C_gluEqn
     (
 	fvm::ddt(C_glu)
 	+ fvm::div(phi, C_glu, "div(phi,C)")
@@ -143,7 +148,7 @@
 
     C_CO2Eqn.solve();*/
 
-/*    fvScalarMatrix C_mAEEqn
+ /*    fvScalarMatrix C_mAEEqn
     (
 	fvm::ddt(C_mAE)
 	+ fvm::div(phi, C_mAE, "div(phi,C)")

@@ -65,7 +65,7 @@ int main(int argc, char *argv[])
     #   include "createMesh.H"
 
     simpleControl simple(mesh);
-
+    pimpleControl pimple(mesh);
     #   include "createFields.H"
 
 
@@ -121,13 +121,13 @@ int main(int argc, char *argv[])
 	Info << "End of bio's Concentraion update." << endl;
     // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-    while (simple.loop())
+    while (pimple.loop())
     {
         Info<< "Time = " << runTime.timeName() << nl << endl;
 
-        while (simple.correctNonOrthogonal())
+        while (pimple.correctNonOrthogonal())
         {
-		#include "CEqn.H"
+		    #include "CEqn.H"
         }
 
 
