@@ -7,7 +7,7 @@
 	(
 		solutionSpeciesDict.toc()
 	);
-	
+
 	scalarList maxY(solutionSpecies.size());
 	forAll(solutionSpecies,i)
 	{
@@ -387,7 +387,7 @@
 				double C_DOM_temp = C_DOM[celli];
 				double C_SOM_temp = C_SOM[celli];
 
-				Y[1][celli] = kD_SOMDOM.value()/(1+kD_SOMDOM.value())*(C_DOM_temp + C_SOM_temp);
+				C_DOM[celli] = kD_SOMDOM.value()/(1+kD_SOMDOM.value())*(C_DOM_temp + C_SOM_temp);
 				C_SOM[celli] = 1/(1+kD_SOMDOM.value())*(C_DOM_temp + C_SOM_temp);
 
 				C_DOM_temp = NULL;
