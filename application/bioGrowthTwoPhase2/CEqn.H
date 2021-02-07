@@ -1,3 +1,4 @@
+
 {
 
 	Info << "Reading solution species dictionary" << endl;
@@ -15,7 +16,7 @@
 	}
 
 	Info << "Reading compressive flux coefficient\n" << endl;	
-		scalar cYi(readScalar(mesh.solutionDict().subDict("PISO").lookup("cYi")));
+	scalar cYi(readScalar(mesh.solutionDict().subDict("PISO").lookup("cYi")));
 
 	//Transport step
 	Info << "transport step" << endl;
@@ -94,9 +95,9 @@
 
 		Info<< "Species concentration = "
         << Yi.weightedAverage(mesh.V()).value()
-			<< "  Min(Yi) = " << gMin(Yi.internalField())
-			<< "  Max(Yi) = " << gMax(Yi.internalField())
-			<< endl;
+		<< "  Min(Yi) = " << gMin(Yi.internalField())
+		<< "  Max(Yi) = " << gMax(Yi.internalField())
+		<< endl;
 	}
 	{//C_DOM transport
 		volScalarField& Yi = C_DOM;
@@ -162,9 +163,9 @@
 
 		Info<< "Species concentration = "
         << Yi.weightedAverage(mesh.V()).value()
-			<< "  Min(Yi) = " << gMin(Yi.internalField())
-			<< "  Max(Yi) = " << gMax(Yi.internalField())
-			<< endl;
+		<< "  Min(Yi) = " << gMin(Yi.internalField())
+		<< "  Max(Yi) = " << gMax(Yi.internalField())
+		<< endl;
 	}
 	{//C_O2 transport
 		volScalarField& Yi = C_O2;
@@ -230,9 +231,9 @@
 
 		Info<< "Species concentration = "
         << Yi.weightedAverage(mesh.V()).value()
-			<< "  Min(Yi) = " << gMin(Yi.internalField())
-			<< "  Max(Yi) = " << gMax(Yi.internalField())
-			<< endl;
+		<< "  Min(Yi) = " << gMin(Yi.internalField())
+		<< "  Max(Yi) = " << gMax(Yi.internalField())
+		<< endl;
 	}
 	{//C_CO2 transport
 		volScalarField& Yi = C_CO2;
@@ -298,9 +299,9 @@
 
 		Info<< "Species concentration = "
         << Yi.weightedAverage(mesh.V()).value()
-			<< "  Min(Yi) = " << gMin(Yi.internalField())
-			<< "  Max(Yi) = " << gMax(Yi.internalField())
-			<< endl;
+		<< "  Min(Yi) = " << gMin(Yi.internalField())
+		<< "  Max(Yi) = " << gMax(Yi.internalField())
+		<< endl;
 	}
  // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
     // fvScalarMatrix C_gluEqn

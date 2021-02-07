@@ -67,13 +67,14 @@ int main(int argc, char *argv[])
     simpleControl simple(mesh);
     pimpleControl pimple(mesh);
     #   include "createFields.H"
-
+    // #   include "readGravitationalAcceleration.H"
+    #   include "createTimeControls.H"
+    #   include "CourantNo.H"
+    #   include "setInitialDeltaT.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
     Info<< "\nCalculating scalar transport\n" << endl;
-
-#   include "CourantNo.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -121,17 +122,29 @@ int main(int argc, char *argv[])
 	Info << "End of bio's Concentraion update." << endl;
     // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-    while (simple.loop())
+    Info<< "\nStarting time loop\n" << endl;
+
+    while (runTime.run())
     {
+        #include "readTimeControls.H"
+        #include "CourantNo.H"
+        #include "setDeltaT.H"
+
+        runTime++;
+
         Info<< "Time = " << runTime.timeName() << nl << endl;
 
-        while (simple.correctNonOrthogonal())
+        while (pimple.loop())
         {
-		    #include "CEqn.H"
+
+            while (pimple.correctNonOrthogonal())
+            {
+                #include "CEqn.H"
+            }
+
+
+            runTime.write();
         }
-
-
-        runTime.write();
     }
 
     Info<< "End\n" << endl;
