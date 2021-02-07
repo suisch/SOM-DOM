@@ -1,0 +1,95 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  dev                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      transportProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+phases (water air);
+phase1 air;
+phase2 water;
+
+
+water
+{
+    transportModel  Newtonian;
+    nu              nu [ 0 2 -1 0 0 0 0 ] 1e-06;
+    rho             rho [ 1 -3 0 0 0 0 0 ] 1000;
+}
+
+air
+{
+    transportModel  Newtonian;
+    nu              nu [ 0 2 -1 0 0 0 0 ] 1.48e-05;
+    rho             rho [ 1 -3 0 0 0 0 0 ] 1;
+}
+
+sigma           sigma [ 1 0 -2 0 0 0 0 ] 0.0707106;
+
+kD_SOMDOM	kD_SOMDOM [ 0 0 0 0 0 0 0 ] 1e-4;
+
+D_glu_Y1		D_glu_Y1 [0 2 -1 0 0 0 0] 1e-8;
+D_glu_Y2		D_glu_Y2 [0 2 -1 0 0 0 0] 1e-8;
+H_glu			H_glu [0 0 0 0 0 0 0] 1;
+
+D_DOM_Y1		D_DOM_Y1 [0 2 -1 0 0 0 0] 1e-8;
+D_DOM_Y2		D_DOM_Y2 [0 2 -1 0 0 0 0] 1e-8;
+H_DOM			H_DOM [0 0 0 0 0 0 0] 1;
+
+D_O2_Y1			D_O2_Y1 [0 2 -1 0 0 0 0] 1e-8;
+D_O2_Y2			D_O2_Y2 [0 2 -1 0 0 0 0] 1e-8;
+H_O2			H_O2 [0 0 0 0 0 0 0] 1;
+
+D_CO2_Y1		D_CO2_Y1 [0 2 -1 0 0 0 0] 1e-8;
+D_CO2_Y2		D_CO2_Y2 [0 2 -1 0 0 0 0] 1e-8;
+H_CO2			H_CO2 [0 0 0 0 0 0 0] 1;
+
+solutionSpecies
+{
+    C_glu
+	{
+		D1				D1 [0 2 -1 0 0 0 0] 1e-8;
+		D2				D2 [0 2 -1 0 0 0 0] 1e-6;
+		H				H [0 0 0 0 0 0 0] 1;
+                Mw                              Mw [1 0 0 0 -1 0 0] 1;
+	}
+
+    C_DOM
+	{
+		D1				D1 [0 2 -1 0 0 0 0] 1e-8;
+		D2				D2 [0 2 -1 0 0 0 0] 1e-6;
+		H				H [0 0 0 0 0 0 0] 1;
+                Mw                              Mw [1 0 0 0 -1 0 0] 1;
+	}
+
+    C_O2
+	{
+		D1				D1 [0 2 -1 0 0 0 0] 1e-8;
+		D2				D2 [0 2 -1 0 0 0 0] 1e-6;
+		H				H [0 0 0 0 0 0 0] 1;
+                Mw                              Mw [1 0 0 0 -1 0 0] 1;
+	}
+
+    C_CO2
+	{
+		D1				D1 [0 2 -1 0 0 0 0] 1e-8;
+		D2				D2 [0 2 -1 0 0 0 0] 1e-6;
+		H				H [0 0 0 0 0 0 0] 1;
+                Mw                              Mw [1 0 0 0 -1 0 0] 1;
+	}
+
+}
+
+
+
+
+// ************************************************************************* //
