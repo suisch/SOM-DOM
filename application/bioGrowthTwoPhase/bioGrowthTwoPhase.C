@@ -32,7 +32,7 @@ Description
 
 #include "fvCFD.H"
 #include "simpleControl.H"
-
+#include "pimpleControl.H"
 #include "speciesTable.H"
 #include "upwind.H"
 #include "downwind.H"
