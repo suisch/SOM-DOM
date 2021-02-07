@@ -1,5 +1,13 @@
 {
+	scalarList maxY(solutionSpecies.size());
+	forAll(solutionSpecies,i)
+	{
+		maxY[i] = readScalar(mesh.solutionDict().subDict("PISO").subDict("maxConcentration").lookup(solutionSpecies[i]));
+	}
 
+	Info << "Reading compressive flux coefficient\n" << endl;	
+		scalar cYi(readScalar(mesh.solutionDict().subDict("PISO").lookup("cYi")));
+		
 	//Transport step
 	Info << "transport step" << endl;
 	word alpharScheme("div(phirb,alpha)");
