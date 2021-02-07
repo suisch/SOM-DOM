@@ -7,7 +7,7 @@
 
 	Info << "Reading compressive flux coefficient\n" << endl;	
 		scalar cYi(readScalar(mesh.solutionDict().subDict("PISO").lookup("cYi")));
-		
+
 	//Transport step
 	Info << "transport step" << endl;
 	word alpharScheme("div(phirb,alpha)");
@@ -21,7 +21,7 @@
 	surfaceScalarField alphaUp = upwind<scalar>(mesh,fluxDir).interpolate(alpha1);
 	surfaceScalarField alphaDown = downwind<scalar>(mesh,fluxDir).interpolate(alpha1);
 
-	//C_glu transport
+	{//C_glu transport
 		volScalarField& Yi = C_glu;
 		dimensionedScalar D1Yi = D_glu_Y1;
 		dimensionedScalar D2Yi = D_glu_Y2;
@@ -56,7 +56,7 @@
         )
 		+phiComp*sign(deltaYi2)*max(mag(deltaYi1),mag(deltaYi2));
 
-    	MULES::explicitSolve(Yi, phi, phiY, maxY[i], 0);
+    	MULES::explicitSolve(Yi, phi, phiY, maxY[0], 0);
 
 		volScalarField SpY = (Yi-Yi.oldTime())/runTime.deltaT();
 
@@ -88,8 +88,8 @@
 			<< "  Min(Yi) = " << gMin(Yi.internalField())
 			<< "  Max(Yi) = " << gMax(Yi.internalField())
 			<< endl;
-
-	//C_DOM transport
+	}
+	{//C_DOM transport
 		volScalarField& Yi = C_DOM;
 		dimensionedScalar D1Yi = D_DOM_Y1;
 		dimensionedScalar D2Yi = D_DOM_Y2;
@@ -124,7 +124,7 @@
         )
 		+phiComp*sign(deltaYi2)*max(mag(deltaYi1),mag(deltaYi2));
 
-    	MULES::explicitSolve(Yi, phi, phiY, maxY[i], 0);
+    	MULES::explicitSolve(Yi, phi, phiY, maxY[1], 0);
 
 		volScalarField SpY = (Yi-Yi.oldTime())/runTime.deltaT();
 
@@ -156,8 +156,8 @@
 			<< "  Min(Yi) = " << gMin(Yi.internalField())
 			<< "  Max(Yi) = " << gMax(Yi.internalField())
 			<< endl;
-
-	//C_O2 transport
+	}
+	{//C_O2 transport
 		volScalarField& Yi = C_O2;
 		dimensionedScalar D1Yi = D_O2_Y1;
 		dimensionedScalar D2Yi = D_O2_Y2;
@@ -192,7 +192,7 @@
         )
 		+phiComp*sign(deltaYi2)*max(mag(deltaYi1),mag(deltaYi2));
 
-    	MULES::explicitSolve(Yi, phi, phiY, maxY[i], 0);
+    	MULES::explicitSolve(Yi, phi, phiY, maxY[2], 0);
 
 		volScalarField SpY = (Yi-Yi.oldTime())/runTime.deltaT();
 
@@ -224,8 +224,8 @@
 			<< "  Min(Yi) = " << gMin(Yi.internalField())
 			<< "  Max(Yi) = " << gMax(Yi.internalField())
 			<< endl;
-
-	//C_CO2 transport
+	}
+	{//C_CO2 transport
 		volScalarField& Yi = C_CO2;
 		dimensionedScalar D1Yi = D_CO2_Y1;
 		dimensionedScalar D2Yi = D_CO2_Y2;
@@ -260,7 +260,7 @@
         )
 		+phiComp*sign(deltaYi2)*max(mag(deltaYi1),mag(deltaYi2));
 
-    	MULES::explicitSolve(Yi, phi, phiY, maxY[i], 0);
+    	MULES::explicitSolve(Yi, phi, phiY, maxY[3], 0);
 
 		volScalarField SpY = (Yi-Yi.oldTime())/runTime.deltaT();
 
@@ -292,7 +292,7 @@
 			<< "  Min(Yi) = " << gMin(Yi.internalField())
 			<< "  Max(Yi) = " << gMax(Yi.internalField())
 			<< endl;
-
+	}
  // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
     // fvScalarMatrix C_gluEqn
     // (
