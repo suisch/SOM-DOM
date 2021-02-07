@@ -67,7 +67,6 @@ int main(int argc, char *argv[])
     simpleControl simple(mesh);
     pimpleControl pimple(mesh);
     #   include "createFields.H"
-    #   include "createFields.H"
     // #   include "readGravitationalAcceleration.H"
     #   include "createTimeControls.H"
     #   include "CourantNo.H"
