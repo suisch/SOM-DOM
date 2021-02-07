@@ -224,11 +224,6 @@ dimensionedScalar D_CO2_Y1
     transportProperties.lookup("D_CO2_Y1")
 );
 
-dimensionedScalar kD_SOMDOM_Y1
-(
-    transportProperties.lookup("kD_SOMDOM_Y1")
-);
-
 dimensionedScalar D_glu_Y2
 (
     transportProperties.lookup("D_glu_Y2")
