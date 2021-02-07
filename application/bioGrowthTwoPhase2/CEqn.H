@@ -434,23 +434,36 @@
 					NULL
 				);
 
-				/*if (concentrationTemp_[2] > 1e-20)
+				if (concentrationTemp_[2] > 1e-20)
 				{ 
-					C[celli] += concentrationTemp_[2];
+					C_O2[celli] += concentrationTemp_[2];
 				}
-				else if ( C[celli] > 1e-20)
+				else if ( C_O2[celli] > 1e-20)
 				{
-					C[celli] += 0;
+					C_O2[celli] += 0;
 				}
 				else
 				{
-					C[celli] = 0;
-				}*/
+					C_O2[celli] = 0;
+				}
+
+				if (concentrationTemp_[3] > 1e-20)
+				{ 
+					C_CO2[celli] += concentrationTemp_[3];
+				}
+				else if ( C_CO2[celli] > 1e-20)
+				{
+					C_CO2[celli] += 0;
+				}
+				else
+				{
+					C_CO2[celli] = 0;
+				}
 
 				C_glu[celli]    = concentrationTemp_[0];//mol/m3
 				C_DOM[celli]    = concentrationTemp_[1];//mol/m3
-				C_O2[celli]     += concentrationTemp_[2];//mol/m3
-				C_CO2[celli]    += concentrationTemp_[3];//mol/m3
+				// C_O2[celli]     += concentrationTemp_[2];//mol/m3
+				// C_CO2[celli]    += concentrationTemp_[3];//mol/m3
 				C_mAE[celli]    = concentrationTemp_[4];//mol/m3
 				C_mF1[celli]    = concentrationTemp_[5];//mol/m3
 				C_mF2[celli]    = concentrationTemp_[6];//mol/m3
