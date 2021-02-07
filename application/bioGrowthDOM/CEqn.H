@@ -74,6 +74,7 @@
 			
 			forAll(C_glu.boundaryField()[patchi], facei)
 			{
+				celli = cellOwner[facei];
 				//Equilibrium reaction for SOM-DOM
 				double C_DOM_temp = C_DOM[celli];
 				double C_SOM_temp = C_SOM[celli];
@@ -85,7 +86,7 @@
 				C_SOM_temp = NULL;
 
 				double time_step = runTime.deltaT().value();
-				celli = cellOwner[facei];
+				
 				
 				//set concentration for BRNS module
 				//for (int i = 0 ; i < numComp; i++){

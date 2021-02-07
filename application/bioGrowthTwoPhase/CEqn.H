@@ -106,81 +106,89 @@
 	}
 
  // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
- /*    fvScalarMatrix C_gluEqn
-    (
-	fvm::ddt(C_glu)
-	+ fvm::div(phi, C_glu, "div(phi,C)")
-	- fvm::laplacian(D_glu, C_glu, "laplacian(C)")
-    );
+    // fvScalarMatrix C_gluEqn
+    // (
+	// fvm::ddt(C_glu)
+	// + fvm::div(phi, C_glu, "div(phi,C)")
+	// - fvm::laplacian(D_glu, C_glu, "laplacian(C)")
+    // );
 
-    C_gluEqn.solve();
+    // C_gluEqn.solve();
 
-    fvScalarMatrix C_DOMEqn
-    (
-	fvm::ddt(C_DOM)
-	+ fvm::div(phi, C_DOM, "div(phi,C)")
-	- fvm::laplacian(D_DOM, C_DOM, "laplacian(C)")
-    );
+    // fvScalarMatrix C_DOMEqn
+    // (
+	// fvm::ddt(C_DOM)
+	// + fvm::div(phi, C_DOM, "div(phi,C)")
+	// - fvm::laplacian(D_DOM, C_DOM, "laplacian(C)")
+    // );
 
-    C_DOMEqn.solve();
+    // C_DOMEqn.solve();
 
-	fvScalarMatrix C_O2Eqn
-    (
-	fvm::ddt(C_O2)
-	+ fvm::div(phi, C_O2, "div(phi,C)")
-	- fvm::laplacian(D_O2, C_O2, "laplacian(C)")
-    );
+	// fvScalarMatrix C_O2Eqn
+    // (
+	// fvm::ddt(C_O2)
+	// + fvm::div(phi, C_O2, "div(phi,C)")
+	// - fvm::laplacian(D_O2, C_O2, "laplacian(C)")
+    // );
 
-    C_O2Eqn.solve();
+    // C_O2Eqn.solve();
 
-    fvScalarMatrix C_CO2Eqn
-    (
-	fvm::ddt(C_CO2)
-	+ fvm::div(phi, C_CO2, "div(phi,C)")
-	- fvm::laplacian(D_CO2, C_CO2, "laplacian(C)")
-    );
+    // fvScalarMatrix C_CO2Eqn
+    // (
+	// fvm::ddt(C_CO2)
+	// + fvm::div(phi, C_CO2, "div(phi,C)")
+	// - fvm::laplacian(D_CO2, C_CO2, "laplacian(C)")
+    // );
 
-    C_CO2Eqn.solve();
+    // C_CO2Eqn.solve();
 
-     fvScalarMatrix C_mAEEqn
-    (
-	fvm::ddt(C_mAE)
-	+ fvm::div(phi, C_mAE, "div(phi,C)")
-	- fvm::laplacian(DT, C_mAE, "laplacian(C)")
-    );
+    //  fvScalarMatrix C_mAEEqn
+    // (
+	// fvm::ddt(C_mAE)
+	// + fvm::div(phi, C_mAE, "div(phi,C)")
+	// - fvm::laplacian(DT, C_mAE, "laplacian(C)")
+    // );
 
-    C_mAEEqn.solve();
+    // C_mAEEqn.solve();
 	
-	fvScalarMatrix C_mF1Eqn
-    (
-	fvm::ddt(C_mF1)
-	+ fvm::div(phi, C_mF1, "div(phi,C)")
-	- fvm::laplacian(DT, C_mF1, "laplacian(C)")
-    );
+	// fvScalarMatrix C_mF1Eqn
+    // (
+	// fvm::ddt(C_mF1)
+	// + fvm::div(phi, C_mF1, "div(phi,C)")
+	// - fvm::laplacian(DT, C_mF1, "laplacian(C)")
+    // );
 
-    C_mF1Eqn.solve();
+    // C_mF1Eqn.solve();
 
-	fvScalarMatrix C_mF2Eqn
-    (
-	fvm::ddt(C_mF2)
-	+ fvm::div(phi, C_mF2, "div(phi,C)")
-	- fvm::laplacian(DT, C_mF2, "laplacian(C)")
-    );
+	// fvScalarMatrix C_mF2Eqn
+    // (
+	// fvm::ddt(C_mF2)
+	// + fvm::div(phi, C_mF2, "div(phi,C)")
+	// - fvm::laplacian(DT, C_mF2, "laplacian(C)")
+    // );
 
-    C_mF2Eqn.solve();*/
+    // C_mF2Eqn.solve();
 	// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 	//reaction step
 	Info << "Reaction Step" << endl;
+
 	double celli = 0;
 	
 	forAll(C_mAE.boundaryField(), patchi)
 	{
+		Info << "First Step" << endl;
+
 		if (Surf.boundaryField()[patchi].type()=="reactingWall")
-		{	
+		{
+			Info << "2nd Step" << endl;
+
 			const labelList& cellOwner = C_mAE.boundaryField()[patchi].patch().faceCells();
 			
 			forAll(C_mAE.boundaryField()[patchi], facei)
 			{
+				Info << "3rd Step" << endl;
+				
+				celli = cellOwner[facei];
 				//Equilibrium reaction for SOM-DOM
 				double C_DOM_temp = Y[1][celli];
 				double C_SOM_temp = C_SOM[celli];
@@ -192,7 +200,6 @@
 				C_SOM_temp = NULL;
 
 				double time_step = runTime.deltaT().value();
-				celli = cellOwner[facei];
 				
 				//set concentration for BRNS module
 				//for (int i = 0 ; i < numComp; i++){
