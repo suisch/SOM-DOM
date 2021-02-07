@@ -1,4 +1,13 @@
 {
+
+	Info << "Reading solution species dictionary" << endl;
+	const dictionary& solutionSpeciesDict = twoPhaseProperties.subDict("solutionSpecies");
+	Info << "Reading solution species name\n" << endl;
+	speciesTable solutionSpecies
+	(
+		solutionSpeciesDict.toc()
+	);
+	
 	scalarList maxY(solutionSpecies.size());
 	forAll(solutionSpecies,i)
 	{
