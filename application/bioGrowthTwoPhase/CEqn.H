@@ -176,17 +176,14 @@
 	
 	forAll(C_mAE.boundaryField(), patchi)
 	{
-		Info << "First Step" << endl;
 
 		if (Surf.boundaryField()[patchi].type()=="reactingWall")
 		{
-			Info << "2nd Step" << endl;
 
 			const labelList& cellOwner = C_mAE.boundaryField()[patchi].patch().faceCells();
 			
 			forAll(C_mAE.boundaryField()[patchi], facei)
 			{
-				Info << "3rd Step" << endl;
 				
 				celli = cellOwner[facei];
 				//Equilibrium reaction for SOM-DOM
@@ -285,3 +282,5 @@
 	}		
 }
 
+Info << "End of reaction step" << endl;
+Info << " " << endl;
