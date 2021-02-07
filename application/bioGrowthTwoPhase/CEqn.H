@@ -58,7 +58,6 @@
 
 		while (simple.correctNonOrthogonal())
 		{
-			int counterAmir = 1;
 			//compute Y equation
 			fvScalarMatrix YiEqn
 			(
@@ -78,10 +77,6 @@
 		    {
 				YiEqn.solve(mesh.solutionDict().solver("Yi"));
 			}
-
-			Info << "Counter= " << counterAmir << endl;
-
-			counterAmir += 1;
 		}
 
 		Info<< "Species concentration = "
@@ -109,7 +104,6 @@
 		Y1i = Yi/(alpha1+HYi*(1-alpha1));
 		Y2i = HYi*Yi/(alpha1+HYi*(1-alpha1));
 	}
-    //reaction step
 
  // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
  /*    fvScalarMatrix C_gluEqn
@@ -146,9 +140,9 @@
 	- fvm::laplacian(D_CO2, C_CO2, "laplacian(C)")
     );
 
-    C_CO2Eqn.solve();*/
+    C_CO2Eqn.solve();
 
- /*    fvScalarMatrix C_mAEEqn
+     fvScalarMatrix C_mAEEqn
     (
 	fvm::ddt(C_mAE)
 	+ fvm::div(phi, C_mAE, "div(phi,C)")
@@ -175,6 +169,8 @@
 
     C_mF2Eqn.solve();*/
 	// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+	//reaction step
+	Info << "Reaction Step" << endl;
 	double celli = 0;
 	
 	forAll(C_mAE.boundaryField(), patchi)
