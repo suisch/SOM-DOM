@@ -459,3 +459,5 @@
 	}		
 }
 
+Info << "End of reaction update." << endl;
+Info << endl;

@@ -121,11 +121,11 @@ int main(int argc, char *argv[])
 	Info << "End of bio's Concentraion update." << endl;
     // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-    while (pimple.loop())
+    while (simple.loop())
     {
         Info<< "Time = " << runTime.timeName() << nl << endl;
 
-        while (pimple.correctNonOrthogonal())
+        while (simple.correctNonOrthogonal())
         {
 		    #include "CEqn.H"
         }
