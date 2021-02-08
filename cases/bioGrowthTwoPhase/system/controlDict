@@ -29,7 +29,7 @@ deltaT          1e-8;
 
 writeControl    adjustableRunTime;
 
-writeInterval   1;
+writeInterval   0.001;
 
 purgeWrite      0;
 
@@ -47,9 +47,9 @@ runTimeModifiable yes;
 
 adjustTimeStep  yes;
 
-maxCo           0.1;
+maxCo           0.8;
 
-maxDeltaT       1e-2;
+maxDeltaT       1e-3;
 
 //libs ("libboundaryConditions.so");
 
