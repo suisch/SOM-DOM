@@ -196,70 +196,70 @@
 				);
 
 
-					if (concentrationTemp_[2] > 1e-20)
-					{ 
-						Y[2][celli] += concentrationTemp_[2];
-					}
-					else if ( Y[2][celli] > 1e-20)
-					{
-						Y[2][celli] += 0;
-					}
-					else
-					{
-						Y[2][celli] = 0;
-					}
+				if (concentrationTemp_[2] > 1e-20)
+				{ 
+					Y[2][celli] += concentrationTemp_[2];
+				}
+				else if ( Y[2][celli] > 1e-20)
+				{
+					Y[2][celli] += 0;
+				}
+				else
+				{
+					Y[2][celli] = 0;
+				}
 
-					if (concentrationTemp_[3] > 1e-20)
-					{ 
-						Y[3][celli] += concentrationTemp_[3];
-					}
-					else if ( Y[3][celli] > 1e-20)
-					{
-						Y[3][celli] += 0;
-					}
-					else
-					{
-						Y[3][celli] = 0;
-					}
+				if (concentrationTemp_[3] > 1e-20)
+				{ 
+					Y[3][celli] += concentrationTemp_[3];
+				}
+				else if ( Y[3][celli] > 1e-20)
+				{
+					Y[3][celli] += 0;
+				}
+				else
+				{
+					Y[3][celli] = 0;
+				}
 
-					if (concentrationTemp_[4] > 1e-20)
-					{ 
-						C_mAE[celli] += concentrationTemp_[4];
-					}
-					else if ( C_mAE[celli] > 1e-20)
-					{
-						C_mAE[celli] += 0;
-					}
-					else
-					{
-						C_mAE[celli] = 0;
-					}
+				if (concentrationTemp_[4] > 1e-20)
+				{ 
+					C_mAE[celli] += concentrationTemp_[4];
+				}
+				else if ( C_mAE[celli] > 1e-20)
+				{
+					C_mAE[celli] += 0;
+				}
+				else
+				{
+					C_mAE[celli] = 0;
+				}
 
-					if (concentrationTemp_[5] > 1e-20)
-					{ 
-						C_mF1[celli] += concentrationTemp_[5];
-					}
-					else if ( C_mF1[celli] > 1e-20)
-					{
-						C_mF1[celli] += 0;
-					}
-					else
-					{
-						C_mF1[celli] = 0;
-					}
+				if (concentrationTemp_[5] > 1e-20)
+				{ 
+					C_mF1[celli] += concentrationTemp_[5];
+				}
+				else if ( C_mF1[celli] > 1e-20)
+				{
+					C_mF1[celli] += 0;
+				}
+				else
+				{
+					C_mF1[celli] = 0;
+				}
 
-					if (concentrationTemp_[6] > 1e-20)
-					{ 
-						C_mF2[celli] += concentrationTemp_[6];
-					}
-					else if ( C_mF2[celli] > 1e-20)
-					{
-						C_mF2[celli] += 0;
-					}
-					else
-					{
-						C_mF2[celli] = 0;
-					}
+				if (concentrationTemp_[6] > 1e-20)
+				{ 
+					C_mF2[celli] += concentrationTemp_[6];
+				}
+				else if ( C_mF2[celli] > 1e-20)
+				{
+					C_mF2[celli] += 0;
+				}
+				else
+				{
+					C_mF2[celli] = 0;
+				}
 
 				Y[0][celli]    = concentrationTemp_[0];//mol/m3
 				Y[1][celli]    = concentrationTemp_[1];//mol/m3
@@ -272,7 +272,13 @@
 				// C_mAE[celli]    = concentrationTemp_[4];//mol/m3
 				// C_mF1[celli]    = concentrationTemp_[5];//mol/m3
 				// C_mF2[celli]    = concentrationTemp_[6];//mol/m3
-
+				cout << "concentration C_glu = " << Y[0][celli] << endl;
+				cout << "concentration C_DOM = " << Y[1][celli] << endl;
+				cout << "concentration C_O2 = " << Y[2][celli] << endl;
+				cout << "concentration C_CO2 = " << Y[3][celli] << endl;
+				cout << "concentration C_mAE = " << C_mAE[celli] << endl;
+				cout << "concentration C_mF1 = " << C_mF1[celli] << endl;
+				cout << "concentration C_mF2 = " << C_mF2[celli] << endl;
 			}
 		}
 	}		
