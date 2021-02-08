@@ -246,12 +246,12 @@
 				{ 
 					cout << "concentration C_mF2B = " << concentrationTemp_[6] << " in cell: " << celli << endl;
 				}
-				
-				if (concentrationTemp_[2] > 1e-20)
+				double smallAmount = 2e-20;
+				if (concentrationTemp_[2] > smallAmount)
 				{ 
 					Y[2][celli] += concentrationTemp_[2];
 				}
-				else if ( Y[2][celli] > 1e-20)
+				else if ( Y[2][celli] > smallAmount)
 				{
 					Y[2][celli] += 0;
 				}
@@ -260,11 +260,11 @@
 					Y[2][celli] = 0;
 				}
 
-				if (concentrationTemp_[3] > 1e-20)
+				if (concentrationTemp_[3] > smallAmount)
 				{ 
 					Y[3][celli] += concentrationTemp_[3];
 				}
-				else if ( Y[3][celli] > 1e-20)
+				else if ( Y[3][celli] > smallAmount)
 				{
 					Y[3][celli] += 0;
 				}
@@ -273,11 +273,11 @@
 					Y[3][celli] = 0;
 				}
 
-				if (concentrationTemp_[4] > 1e-20)
+				if (concentrationTemp_[4] > smallAmount)
 				{ 
 					C_mAE[celli] = concentrationTemp_[4];
 				}
-				else if ( C_mAE[celli] > 1e-20)
+				else if ( C_mAE[celli] > smallAmount)
 				{
 					C_mAE[celli] += 0;
 				}
@@ -286,11 +286,11 @@
 					C_mAE[celli] = 0;
 				}
 
-				if (concentrationTemp_[5] > 1e-20)
+				if (concentrationTemp_[5] > smallAmount)
 				{ 
 					C_mF1[celli] = concentrationTemp_[5];
 				}
-				else if ( C_mF1[celli] > 1e-20)
+				else if ( C_mF1[celli] > smallAmount)
 				{
 					C_mF1[celli] += 0;
 				}
@@ -299,11 +299,11 @@
 					C_mF1[celli] = 0;
 				}
 
-				if (concentrationTemp_[6] > 1e-20)
+				if (concentrationTemp_[6] > smallAmount)
 				{ 
 					C_mF2[celli] = concentrationTemp_[6];
 				}
-				else if ( C_mF2[celli] > 1e-20)
+				else if ( C_mF2[celli] > smallAmount)
 				{
 					C_mF2[celli] += 0;
 				}
@@ -312,11 +312,11 @@
 					C_mF2[celli] = 0;
 				}
 
-				if (concentrationTemp_[0] > 1e-20)
+				if (concentrationTemp_[0] > smallAmount)
 				{ 
 					Y[0][celli] = concentrationTemp_[0];
 				}
-				else if ( Y[0][celli] > 1e-20)
+				else if ( Y[0][celli] > smallAmount)
 				{
 					Y[0][celli] += 0;
 				}
@@ -325,11 +325,11 @@
 					Y[0][celli] = 0;
 				}
 
-				if (concentrationTemp_[1] > 1e-20)
+				if (concentrationTemp_[1] > smallAmount)
 				{ 
 					Y[1][celli] = concentrationTemp_[1];
 				}
-				else if ( Y[1][celli] > 1e-20)
+				else if ( Y[1][celli] > smallAmount)
 				{
 					Y[1][celli] += 0;
 				}
