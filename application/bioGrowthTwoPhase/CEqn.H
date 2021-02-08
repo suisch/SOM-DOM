@@ -239,7 +239,7 @@
 
 				if (concentrationTemp_[4] > 1e-20)
 				{ 
-					C_mAE[celli] += concentrationTemp_[4];
+					C_mAE[celli] = concentrationTemp_[4];
 				}
 				else if ( C_mAE[celli] > 1e-20)
 				{
@@ -252,7 +252,7 @@
 
 				if (concentrationTemp_[5] > 1e-20)
 				{ 
-					C_mF1[celli] += concentrationTemp_[5];
+					C_mF1[celli] = concentrationTemp_[5];
 				}
 				else if ( C_mF1[celli] > 1e-20)
 				{
@@ -265,7 +265,7 @@
 
 				if (concentrationTemp_[6] > 1e-20)
 				{ 
-					C_mF2[celli] += concentrationTemp_[6];
+					C_mF2[celli] = concentrationTemp_[6];
 				}
 				else if ( C_mF2[celli] > 1e-20)
 				{
