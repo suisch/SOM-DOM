@@ -172,34 +172,34 @@
 					boundary_flag[i] = 0;
 				}
 
-				if (concentrationTemp_[0] > 1)
-				{ 
-					cout << "concentration C_gluA = " << concentrationTemp_[0] << " in cell: " << celli << endl;
-				}
-				if (concentrationTemp_[1] > 1)
-				{ 
-					cout << "concentration C_DOMA = " << concentrationTemp_[1] << " in cell: " << celli << endl;
-				}
-				if (concentrationTemp_[2] > 1)
-				{ 
-					cout << "concentration C_O2A = " << concentrationTemp_[2] << " in cell: " << celli << endl;
-				}
-				if (concentrationTemp_[3] > 1)
-				{ 
-					cout << "concentration C_CO2A = " << concentrationTemp_[3] << " in cell: " << celli << endl;
-				}
-				if (concentrationTemp_[4] > 1)
-				{ 
-					cout << "concentration C_mAEA = " << concentrationTemp_[4] << " in cell: " << celli << endl;
-				}
-				if (concentrationTemp_[5] > 1)
-				{ 
-					cout << "concentration C_mF1A = " << concentrationTemp_[5] << " in cell: " << celli << endl;
-				}
-				if (concentrationTemp_[6] > 1)
-				{ 
-					cout << "concentration C_mF2A = " << concentrationTemp_[6] << " in cell: " << celli << endl;
-				}
+				// if (concentrationTemp_[0] > 1)
+				// { 
+				// 	cout << "concentration C_gluA = " << concentrationTemp_[0] << " in cell: " << celli << endl;
+				// }
+				// if (concentrationTemp_[1] > 1)
+				// { 
+				// 	cout << "concentration C_DOMA = " << concentrationTemp_[1] << " in cell: " << celli << endl;
+				// }
+				// if (concentrationTemp_[2] > 1)
+				// { 
+				// 	cout << "concentration C_O2A = " << concentrationTemp_[2] << " in cell: " << celli << endl;
+				// }
+				// if (concentrationTemp_[3] > 1)
+				// { 
+				// 	cout << "concentration C_CO2A = " << concentrationTemp_[3] << " in cell: " << celli << endl;
+				// }
+				// if (concentrationTemp_[4] > 1)
+				// { 
+				// 	cout << "concentration C_mAEA = " << concentrationTemp_[4] << " in cell: " << celli << endl;
+				// }
+				// if (concentrationTemp_[5] > 1)
+				// { 
+				// 	cout << "concentration C_mF1A = " << concentrationTemp_[5] << " in cell: " << celli << endl;
+				// }
+				// if (concentrationTemp_[6] > 1)
+				// { 
+				// 	cout << "concentration C_mF2A = " << concentrationTemp_[6] << " in cell: " << celli << endl;
+				// }
 
 		// Info << "Invoking BRNS" << endl;
 				invokebrns_
@@ -218,37 +218,37 @@
 					&waterSaturation,
 					NULL
 				);
-				if (concentrationTemp_[0] > 1)
-				{ 
-					cout << "concentration C_gluB = " << concentrationTemp_[0] << " in cell: " << celli << endl;
-				}
-				if (concentrationTemp_[1] > 1)
-				{ 
-					cout << "concentration C_DOMB = " << concentrationTemp_[1] << " in cell: " << celli << endl;
-				}
-				if (concentrationTemp_[2] > 1)
-				{ 
-					cout << "concentration C_O2B = " << concentrationTemp_[2] << " in cell: " << celli << endl;
-				}
-				if (concentrationTemp_[3] > 1)
-				{ 
-					cout << "concentration C_CO2B = " << concentrationTemp_[3] << " in cell: " << celli << endl;
-				}
-				if (concentrationTemp_[4] > 1)
-				{ 
-					cout << "concentration C_mAEB = " << concentrationTemp_[4] << " in cell: " << celli << endl;
-				}
-				if (concentrationTemp_[5] > 1)
-				{ 
-					cout << "concentration C_mF1B = " << concentrationTemp_[5] << " in cell: " << celli << endl;
-				}
-				if (concentrationTemp_[6] > 1)
-				{ 
-					cout << "concentration C_mF2B = " << concentrationTemp_[6] << " in cell: " << celli << endl;
-				}
+				// if (concentrationTemp_[0] > 1)
+				// { 
+				// 	cout << "concentration C_gluB = " << concentrationTemp_[0] << " in cell: " << celli << endl;
+				// }
+				// if (concentrationTemp_[1] > 1)
+				// { 
+				// 	cout << "concentration C_DOMB = " << concentrationTemp_[1] << " in cell: " << celli << endl;
+				// }
+				// if (concentrationTemp_[2] > 1)
+				// { 
+				// 	cout << "concentration C_O2B = " << concentrationTemp_[2] << " in cell: " << celli << endl;
+				// }
+				// if (concentrationTemp_[3] > 1)
+				// { 
+				// 	cout << "concentration C_CO2B = " << concentrationTemp_[3] << " in cell: " << celli << endl;
+				// }
+				// if (concentrationTemp_[4] > 1)
+				// { 
+				// 	cout << "concentration C_mAEB = " << concentrationTemp_[4] << " in cell: " << celli << endl;
+				// }
+				// if (concentrationTemp_[5] > 1)
+				// { 
+				// 	cout << "concentration C_mF1B = " << concentrationTemp_[5] << " in cell: " << celli << endl;
+				// }
+				// if (concentrationTemp_[6] > 1)
+				// { 
+				// 	cout << "concentration C_mF2B = " << concentrationTemp_[6] << " in cell: " << celli << endl;
+				// }
  // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-				double smallAmount = 5e-20;
+				double smallAmount = 1e-20;
 
 				if (concentrationTemp_[2] > smallAmount)
 				{ 
