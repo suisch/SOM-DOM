@@ -172,18 +172,34 @@
 					boundary_flag[i] = 0;
 				}
 
-				/*boundary_flag[0] = 0;
-				boundary_flag[1] = 0;
-				boundary_flag[2] = 0;
-				boundary_flag[3] = 0;
-				boundary_flag[4] = 0;
-				boundary_flag[5] = 0;
-				boundary_flag[6] = 0;*/
-
-				/*cout << "concentration A = " << concentrationTemp_[0] << endl;
-				cout << "concentration B = " << concentrationTemp_[1] << endl;
-				cout << "concentration C = " << concentrationTemp_[2] << endl;
-				cout << "concentration bio = " << concentrationTemp_[3] << endl;*/
+				if (concentrationTemp_[0] > 1.5)
+				{ 
+					cout << "concentration C_gluA = " << concentrationTemp_[0] << " in cell: " << celli << endl;
+				}
+				if (concentrationTemp_[1] > 1.5)
+				{ 
+					cout << "concentration C_DOMA = " << concentrationTemp_[1] << " in cell: " << celli << endl;
+				}
+				if (concentrationTemp_[2] > 1.5)
+				{ 
+					cout << "concentration C_O2A = " << concentrationTemp_[2] << " in cell: " << celli << endl;
+				}
+				if (concentrationTemp_[3] > 1.5)
+				{ 
+					cout << "concentration C_CO2A = " << concentrationTemp_[3] << " in cell: " << celli << endl;
+				}
+				if (concentrationTemp_[4] > 1.5)
+				{ 
+					cout << "concentration C_mAEA = " << concentrationTemp_[4] << " in cell: " << celli << endl;
+				}
+				if (concentrationTemp_[5] > 1.5)
+				{ 
+					cout << "concentration C_mF1A = " << concentrationTemp_[5] << " in cell: " << celli << endl;
+				}
+				if (concentrationTemp_[6] > 1.5)
+				{ 
+					cout << "concentration C_mF2A = " << concentrationTemp_[6] << " in cell: " << celli << endl;
+				}
 
 		// Info << "Invoking BRNS" << endl;
 				invokebrns_
@@ -202,15 +218,35 @@
 					&waterSaturation,
 					NULL
 				);
-
-				cout << "concentration C_glu = " << concentrationTemp_[0] << endl;
-				cout << "concentration C_DOM = " << concentrationTemp_[1] << endl;
-				cout << "concentration C_O2 = " << concentrationTemp_[2] << endl;
-				cout << "concentration C_CO2 = " << concentrationTemp_[3] << endl;
-				cout << "concentration C_mAE = " << concentrationTemp_[4] << endl;
-				cout << "concentration C_mF1 = " << concentrationTemp_[5] << endl;
-				cout << "concentration C_mF2 = " << concentrationTemp_[6] << endl;
-
+				if (concentrationTemp_[0] > 1.5)
+				{ 
+					cout << "concentration C_gluB = " << concentrationTemp_[0] << " in cell: " << celli << endl;
+				}
+				if (concentrationTemp_[1] > 1.5)
+				{ 
+					cout << "concentration C_DOMB = " << concentrationTemp_[1] << " in cell: " << celli << endl;
+				}
+				if (concentrationTemp_[2] > 1.5)
+				{ 
+					cout << "concentration C_O2B = " << concentrationTemp_[2] << " in cell: " << celli << endl;
+				}
+				if (concentrationTemp_[3] > 1.5)
+				{ 
+					cout << "concentration C_CO2B = " << concentrationTemp_[3] << " in cell: " << celli << endl;
+				}
+				if (concentrationTemp_[4] > 1.5)
+				{ 
+					cout << "concentration C_mAEB = " << concentrationTemp_[4] << " in cell: " << celli << endl;
+				}
+				if (concentrationTemp_[5] > 1.5)
+				{ 
+					cout << "concentration C_mF1B = " << concentrationTemp_[5] << " in cell: " << celli << endl;
+				}
+				if (concentrationTemp_[6] > 1.5)
+				{ 
+					cout << "concentration C_mF2B = " << concentrationTemp_[6] << " in cell: " << celli << endl;
+				}
+				
 				if (concentrationTemp_[2] > 1e-20)
 				{ 
 					Y[2][celli] += concentrationTemp_[2];
@@ -287,13 +323,13 @@
 				// C_mAE[celli]    = concentrationTemp_[4];//mol/m3
 				// C_mF1[celli]    = concentrationTemp_[5];//mol/m3
 				// C_mF2[celli]    = concentrationTemp_[6];//mol/m3
-				cout << "concentration C_glu = " << Y[0][celli] << endl;
-				cout << "concentration C_DOM = " << Y[1][celli] << endl;
-				cout << "concentration C_O2 = " << Y[2][celli] << endl;
-				cout << "concentration C_CO2 = " << Y[3][celli] << endl;
-				cout << "concentration C_mAE = " << C_mAE[celli] << endl;
-				cout << "concentration C_mF1 = " << C_mF1[celli] << endl;
-				cout << "concentration C_mF2 = " << C_mF2[celli] << endl;
+				// cout << "concentration C_glu = " << Y[0][celli] << endl;
+				// cout << "concentration C_DOM = " << Y[1][celli] << endl;
+				// cout << "concentration C_O2 = " << Y[2][celli] << endl;
+				// cout << "concentration C_CO2 = " << Y[3][celli] << endl;
+				// cout << "concentration C_mAE = " << C_mAE[celli] << endl;
+				// cout << "concentration C_mF1 = " << C_mF1[celli] << endl;
+				// cout << "concentration C_mF2 = " << C_mF2[celli] << endl;
 			}
 		}
 	}		
