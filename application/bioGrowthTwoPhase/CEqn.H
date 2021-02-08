@@ -95,23 +95,23 @@
 	Mflux = fvc::div(phiD*alphaDown)-alpha1*fvc::div(phiD);
 
 	//compute Yi1 and Yi2
-	// forAll(solutionSpecies, i)
-	// {
-	// 	volScalarField& Yi = Y[i];
-	// 	volScalarField& Y1i = Y1[i];
-	// 	volScalarField& Y2i = Y2[i];
-	// 	dimensionedScalar HYi = HY[i];
-	// 	Y1i = Yi/(alpha1+HYi*(1-alpha1));
-	// 	Y2i = HYi*Yi/(alpha1+HYi*(1-alpha1));
-	// }
+	forAll(solutionSpecies, i)
+	{
+		volScalarField& Yi = Y[i];
+		volScalarField& Y1i = Y1[i];
+		volScalarField& Y2i = Y2[i];
+		dimensionedScalar HYi = HY[i];
+		Y1i = Yi/(alpha1+HYi*(1-alpha1));
+		Y2i = HYi*Yi/(alpha1+HYi*(1-alpha1));
+	}
 
-	// forAll(solutionSpecies, i)
-	// {
-	// 	volScalarField& Yi = Y[i];
-	// 	volScalarField& Y1i = Y1[i];
-	// 	volScalarField& Y2i = Y2[i];
-	// 	Yi = Y1i*alpha1 + Y2i*(1-alpha1);
-	// }
+	forAll(solutionSpecies, i)
+	{
+		volScalarField& Yi = Y[i];
+		volScalarField& Y1i = Y1[i];
+		volScalarField& Y2i = Y2[i];
+		Yi = Y1i*alpha1 + Y2i*(1-alpha1);
+	}
 
  // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
     
