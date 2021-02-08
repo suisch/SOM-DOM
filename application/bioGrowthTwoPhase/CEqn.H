@@ -115,9 +115,13 @@
 	
 	forAll(C_mAE.boundaryField(), patchi)
 	{
-
+		Info << "One" << endl;
+		Info << endl;
 		if (Surf.boundaryField()[patchi].type()=="reactingWall")
 		{
+
+			Info << "Two" << endl;
+			Info << endl;
 
 			const labelList& cellOwner = C_mAE.boundaryField()[patchi].patch().faceCells();
 			
