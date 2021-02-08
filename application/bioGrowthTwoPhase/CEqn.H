@@ -95,23 +95,23 @@
 	Mflux = fvc::div(phiD*alphaDown)-alpha1*fvc::div(phiD);
 
 	//compute Yi1 and Yi2
-	forAll(solutionSpecies, i)
-	{
-		volScalarField& Yi = Y[i];
-		volScalarField& Y1i = Y1[i];
-		volScalarField& Y2i = Y2[i];
-		dimensionedScalar HYi = HY[i];
-		Y1i = Yi/(alpha1+HYi*(1-alpha1));
-		Y2i = HYi*Yi/(alpha1+HYi*(1-alpha1));
-	}
+	// forAll(solutionSpecies, i)
+	// {
+	// 	volScalarField& Yi = Y[i];
+	// 	volScalarField& Y1i = Y1[i];
+	// 	volScalarField& Y2i = Y2[i];
+	// 	dimensionedScalar HYi = HY[i];
+	// 	Y1i = Yi/(alpha1+HYi*(1-alpha1));
+	// 	Y2i = HYi*Yi/(alpha1+HYi*(1-alpha1));
+	// }
 
-	forAll(solutionSpecies, i)
-	{
-		volScalarField& Yi = Y[i];
-		volScalarField& Y1i = Y1[i];
-		volScalarField& Y2i = Y2[i];
-		Yi = Y1i*alpha1 + Y2i*(1-alpha1);
-	}
+	// forAll(solutionSpecies, i)
+	// {
+	// 	volScalarField& Yi = Y[i];
+	// 	volScalarField& Y1i = Y1[i];
+	// 	volScalarField& Y2i = Y2[i];
+	// 	Yi = Y1i*alpha1 + Y2i*(1-alpha1);
+	// }
 
  // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
     
@@ -203,13 +203,13 @@
 					NULL
 				);
 
-				// cout << "concentration C_glu = " << concentrationTemp_[0] << endl;
-				// cout << "concentration C_DOM = " << concentrationTemp_[1] << endl;
-				// cout << "concentration C_O2 = " << concentrationTemp_[2] << endl;
-				// cout << "concentration C_CO2 = " << concentrationTemp_[3] << endl;
-				// cout << "concentration C_mAE = " << concentrationTemp_[4] << endl;
-				// cout << "concentration C_mF1 = " << concentrationTemp_[5] << endl;
-				// cout << "concentration C_mF2 = " << concentrationTemp_[6] << endl;
+				cout << "concentration C_glu = " << concentrationTemp_[0] << endl;
+				cout << "concentration C_DOM = " << concentrationTemp_[1] << endl;
+				cout << "concentration C_O2 = " << concentrationTemp_[2] << endl;
+				cout << "concentration C_CO2 = " << concentrationTemp_[3] << endl;
+				cout << "concentration C_mAE = " << concentrationTemp_[4] << endl;
+				cout << "concentration C_mF1 = " << concentrationTemp_[5] << endl;
+				cout << "concentration C_mF2 = " << concentrationTemp_[6] << endl;
 
 				if (concentrationTemp_[2] > 1e-20)
 				{ 
@@ -287,13 +287,13 @@
 				// C_mAE[celli]    = concentrationTemp_[4];//mol/m3
 				// C_mF1[celli]    = concentrationTemp_[5];//mol/m3
 				// C_mF2[celli]    = concentrationTemp_[6];//mol/m3
-				// cout << "concentration C_glu = " << Y[0][celli] << endl;
-				// cout << "concentration C_DOM = " << Y[1][celli] << endl;
-				// cout << "concentration C_O2 = " << Y[2][celli] << endl;
-				// cout << "concentration C_CO2 = " << Y[3][celli] << endl;
-				// cout << "concentration C_mAE = " << C_mAE[celli] << endl;
-				// cout << "concentration C_mF1 = " << C_mF1[celli] << endl;
-				// cout << "concentration C_mF2 = " << C_mF2[celli] << endl;
+				cout << "concentration C_glu = " << Y[0][celli] << endl;
+				cout << "concentration C_DOM = " << Y[1][celli] << endl;
+				cout << "concentration C_O2 = " << Y[2][celli] << endl;
+				cout << "concentration C_CO2 = " << Y[3][celli] << endl;
+				cout << "concentration C_mAE = " << C_mAE[celli] << endl;
+				cout << "concentration C_mF1 = " << C_mF1[celli] << endl;
+				cout << "concentration C_mF2 = " << C_mF2[celli] << endl;
 			}
 		}
 	}		

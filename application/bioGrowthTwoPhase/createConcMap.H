@@ -176,7 +176,7 @@ forAll(solutionSpecies,i)
 }
 
 Info << "Reading compressive flux coefficient\n" << endl;	
-    scalar cYi(readScalar(mesh.solutionDict().subDict("PISO").lookup("cYi")));
+scalar cYi(readScalar(mesh.solutionDict().subDict("PISO").lookup("cYi")));
 
 Info << "Reading equilibrium constant for SOM-DOM dynamics\n" << endl;	
 dimensionedScalar kD_SOMDOM
