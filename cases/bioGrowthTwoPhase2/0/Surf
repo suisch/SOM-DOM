@@ -35,7 +35,7 @@ boundaryField
 	        density 2.4e-9;
             };
         };
-        value uniform 2.4e-9;
+        value uniform 1;
     }
 
     inlet
@@ -63,7 +63,7 @@ boundaryField
 	        density 2.4e-9;
             };
         };
-        value uniform 2.4e-9;
+        value uniform 1;
     }
 
 }
