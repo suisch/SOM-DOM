@@ -113,7 +113,7 @@
 
 	double celli = 0;
 	
-	forAll(C_mAE.boundaryField(), patchi)
+	forAll(Y[0].boundaryField(), patchi)
 	{
 		Info << "One" << endl;
 		Info << endl;
@@ -123,9 +123,9 @@
 			Info << "Two" << endl;
 			Info << endl;
 
-			const labelList& cellOwner = C_mAE.boundaryField()[patchi].patch().faceCells();
+			const labelList& cellOwner = Y[0].boundaryField()[patchi].patch().faceCells();
 			
-			forAll(C_mAE.boundaryField()[patchi], facei)
+			forAll(Y[0].boundaryField()[patchi], facei)
 			{
 				
 				celli = cellOwner[facei];
