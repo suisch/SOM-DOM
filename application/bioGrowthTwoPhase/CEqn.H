@@ -246,7 +246,10 @@
 				{ 
 					cout << "concentration C_mF2B = " << concentrationTemp_[6] << " in cell: " << celli << endl;
 				}
-				double smallAmount = 2e-20;
+ // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+				double smallAmount = 5e-20;
+
 				if (concentrationTemp_[2] > smallAmount)
 				{ 
 					Y[2][celli] += concentrationTemp_[2];
