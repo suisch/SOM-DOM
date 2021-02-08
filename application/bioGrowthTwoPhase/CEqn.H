@@ -312,8 +312,33 @@
 					C_mF2[celli] = 0;
 				}
 
-				Y[0][celli]    = concentrationTemp_[0];//mol/m3
-				Y[1][celli]    = concentrationTemp_[1];//mol/m3
+				if (concentrationTemp_[0] > 1e-20)
+				{ 
+					Y[0][celli] = concentrationTemp_[0];
+				}
+				else if ( Y[0][celli] > 1e-20)
+				{
+					Y[0][celli] += 0;
+				}
+				else
+				{
+					Y[0][celli] = 0;
+				}
+
+				if (concentrationTemp_[1] > 1e-20)
+				{ 
+					Y[1][celli] = concentrationTemp_[1];
+				}
+				else if ( Y[1][celli] > 1e-20)
+				{
+					Y[1][celli] += 0;
+				}
+				else
+				{
+					Y[1][celli] = 0;
+				}
+				// Y[0][celli]    = concentrationTemp_[0];//mol/m3
+				// Y[1][celli]    = concentrationTemp_[1];//mol/m3
 				// Y[2][celli]    = concentrationTemp_[2];//mol/m3
 				// Y[3][celli]    = concentrationTemp_[3];//mol/m3
 				//C_glu[celli]    = concentrationTemp_[0];//mol/m3
