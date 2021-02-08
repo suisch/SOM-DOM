@@ -99,7 +99,7 @@ int main(int argc, char *argv[])
 	// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
  	Info << "setting values of bio's Concentration around patch wall to 0.1." << endl;
 	
-	forAll(C_mAE.boundaryField(), patchi)
+	forAll(Surf.boundaryField(), patchi)
 	{
 		if (Surf.boundaryField()[patchi].type()=="reactingWall")
 		{
@@ -126,9 +126,9 @@ int main(int argc, char *argv[])
 
     while (runTime.run())
     {
-        #include "readTimeControls.H"
-        #include "CourantNo.H"
-        #include "setDeltaT.H"
+        // #include "readTimeControls.H"
+        // #include "CourantNo.H"
+        // #include "setDeltaT.H"
 
         runTime++;
 

@@ -372,13 +372,13 @@
 
 	double celli = 0;
 	
-	forAll(C_mAE.boundaryField(), patchi)
+	forAll(C_glu.boundaryField(), patchi)
 	{
 
 		if (Surf.boundaryField()[patchi].type()=="reactingWall")
 		{
 
-			const labelList& cellOwner = C_mAE.boundaryField()[patchi].patch().faceCells();
+			const labelList& cellOwner = C_glu.boundaryField()[patchi].patch().faceCells();
 			
 			forAll(C_mAE.boundaryField()[patchi], facei)
 			{
