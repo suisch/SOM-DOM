@@ -177,7 +177,7 @@
 				cout << "concentration C = " << concentrationTemp_[2] << endl;
 				cout << "concentration bio = " << concentrationTemp_[3] << endl;*/
 
-				Info << "Invoking BRNS" << endl;
+		// Info << "Invoking BRNS" << endl;
 				invokebrns_
 				(
 					concentrationTemp_,
