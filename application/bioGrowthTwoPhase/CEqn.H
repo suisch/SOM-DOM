@@ -106,69 +106,8 @@
 	}
 
  // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-    // fvScalarMatrix C_gluEqn
-    // (
-	// fvm::ddt(C_glu)
-	// + fvm::div(phi, C_glu, "div(phi,C)")
-	// - fvm::laplacian(D_glu, C_glu, "laplacian(C)")
-    // );
-
-    // C_gluEqn.solve();
-
-    // fvScalarMatrix C_DOMEqn
-    // (
-	// fvm::ddt(C_DOM)
-	// + fvm::div(phi, C_DOM, "div(phi,C)")
-	// - fvm::laplacian(D_DOM, C_DOM, "laplacian(C)")
-    // );
-
-    // C_DOMEqn.solve();
-
-	// fvScalarMatrix C_O2Eqn
-    // (
-	// fvm::ddt(C_O2)
-	// + fvm::div(phi, C_O2, "div(phi,C)")
-	// - fvm::laplacian(D_O2, C_O2, "laplacian(C)")
-    // );
-
-    // C_O2Eqn.solve();
-
-    // fvScalarMatrix C_CO2Eqn
-    // (
-	// fvm::ddt(C_CO2)
-	// + fvm::div(phi, C_CO2, "div(phi,C)")
-	// - fvm::laplacian(D_CO2, C_CO2, "laplacian(C)")
-    // );
-
-    // C_CO2Eqn.solve();
-
-    //  fvScalarMatrix C_mAEEqn
-    // (
-	// fvm::ddt(C_mAE)
-	// + fvm::div(phi, C_mAE, "div(phi,C)")
-	// - fvm::laplacian(DT, C_mAE, "laplacian(C)")
-    // );
-
-    // C_mAEEqn.solve();
-	
-	// fvScalarMatrix C_mF1Eqn
-    // (
-	// fvm::ddt(C_mF1)
-	// + fvm::div(phi, C_mF1, "div(phi,C)")
-	// - fvm::laplacian(DT, C_mF1, "laplacian(C)")
-    // );
-
-    // C_mF1Eqn.solve();
-
-	// fvScalarMatrix C_mF2Eqn
-    // (
-	// fvm::ddt(C_mF2)
-	// + fvm::div(phi, C_mF2, "div(phi,C)")
-	// - fvm::laplacian(DT, C_mF2, "laplacian(C)")
-    // );
-
-    // C_mF2Eqn.solve();
-	// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+    
+ // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 	//reaction step
 	Info << "Reaction Step" << endl;
 
@@ -187,31 +126,35 @@
 				
 				celli = cellOwner[facei];
 				//Equilibrium reaction for SOM-DOM
-				double C_DOM_temp = Y[1][celli];
-				double C_SOM_temp = C_SOM[celli];
+				{
+					volScalarField& C_DOM_temp = Y[1]; //C_DOM
+					double C_DOM_temp_celli = C_DOM_temp[celli];
+					double C_SOM_temp = C_SOM[celli];
 
-				Y[1][celli] = kD_SOMDOM.value()/(1+kD_SOMDOM.value())*(C_DOM_temp + C_SOM_temp);
-				C_SOM[celli] = 1/(1+kD_SOMDOM.value())*(C_DOM_temp + C_SOM_temp);
-
-				C_DOM_temp = NULL;
-				C_SOM_temp = NULL;
+					C_DOM_temp[celli] = kD_SOMDOM.value()/(1+kD_SOMDOM.value())*(C_DOM_temp_celli + C_SOM_temp);
+					C_SOM[celli] = 1/(1+kD_SOMDOM.value())*(C_DOM_temp_celli + C_SOM_temp);
+				}
 
 				double time_step = runTime.deltaT().value();
 				
 				//set concentration for BRNS module
 				//for (int i = 0 ; i < numComp; i++){
-				int iCounter = 0;
-				forAll(solutionSpecies, i)
-				{
-					concentrationTemp_[iCounter] = Y[i][celli];
-					iCounter += 1;
-				}
-				iCounter = NULL;
+				// int iCounter = 0;
+				// forAll(solutionSpecies, i)
+				// {
+				// 	concentrationTemp_[iCounter] = Y[i][celli];
+				// 	iCounter += 1;
+				// }
+				// iCounter = NULL;
 
 				//concentrationTemp_[0] = C_glu[celli];
 				//concentrationTemp_[1] = C_DOM[celli];
 				//concentrationTemp_[2] = 0;				//C_O2
 				//concentrationTemp_[3] = 0;				//C_CO2
+				concentrationTemp_[0] = Y[0][celli];
+				concentrationTemp_[1] = Y[1][celli];
+				concentrationTemp_[2] = 0;				//C_O2
+				concentrationTemp_[3] = 0;				//C_CO2
 				concentrationTemp_[4] = C_mAE[celli];
 				concentrationTemp_[5] = C_mF1[celli];
 				concentrationTemp_[6] = C_mF2[celli];
@@ -252,18 +195,71 @@
 					NULL
 				);
 
-				/*if (concentrationTemp_[2] > 1e-20)
+
+				if (concentrationTemp_[2] > 1e-20)
 				{ 
-					C[celli] += concentrationTemp_[2];
+					C_O2[celli] += concentrationTemp_[2];
 				}
-				else if ( C[celli] > 1e-20)
+				else if ( C_O2[celli] > 1e-20)
 				{
-					C[celli] += 0;
+					C_O2[celli] += 0;
 				}
 				else
 				{
-					C[celli] = 0;
-				}*/
+					C_O2[celli] = 0;
+				}
+
+				if (concentrationTemp_[3] > 1e-20)
+				{ 
+					C_CO2[celli] += concentrationTemp_[3];
+				}
+				else if ( C_CO2[celli] > 1e-20)
+				{
+					C_CO2[celli] += 0;
+				}
+				else
+				{
+					C_CO2[celli] = 0;
+				}
+
+				if (concentrationTemp_[4] > 1e-20)
+				{ 
+					C_mAE[celli] += concentrationTemp_[4];
+				}
+				else if ( C_mAE[celli] > 1e-20)
+				{
+					C_mAE[celli] += 0;
+				}
+				else
+				{
+					C_mAE[celli] = 0;
+				}
+
+				if (concentrationTemp_[5] > 1e-20)
+				{ 
+					C_mF1[celli] += concentrationTemp_[5];
+				}
+				else if ( C_mF1[celli] > 1e-20)
+				{
+					C_mF1[celli] += 0;
+				}
+				else
+				{
+					C_mF1[celli] = 0;
+				}
+
+				if (concentrationTemp_[6] > 1e-20)
+				{ 
+					C_mF2[celli] += concentrationTemp_[6];
+				}
+				else if ( C_mF2[celli] > 1e-20)
+				{
+					C_mF2[celli] += 0;
+				}
+				else
+				{
+					C_mF2[celli] = 0;
+				}
 
 				Y[0][celli]    = concentrationTemp_[0];//mol/m3
 				Y[1][celli]    = concentrationTemp_[1];//mol/m3
@@ -273,9 +269,9 @@
 				//C_DOM[celli]    = concentrationTemp_[1];//mol/m3
 				//C_O2[celli]     += concentrationTemp_[2];//mol/m3
 				//C_CO2[celli]    += concentrationTemp_[3];//mol/m3
-				C_mAE[celli]    = concentrationTemp_[4];//mol/m3
-				C_mF1[celli]    = concentrationTemp_[5];//mol/m3
-				C_mF2[celli]    = concentrationTemp_[6];//mol/m3
+				// C_mAE[celli]    = concentrationTemp_[4];//mol/m3
+				// C_mF1[celli]    = concentrationTemp_[5];//mol/m3
+				// C_mF2[celli]    = concentrationTemp_[6];//mol/m3
 
 			}
 		}

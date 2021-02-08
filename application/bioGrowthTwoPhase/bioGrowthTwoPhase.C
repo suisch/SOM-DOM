@@ -39,9 +39,9 @@ Description
 #include "MULES.H"
 #include "twoPhaseMixture.H"
 
-#include "reactingWallFvPatchScalarField.C"
+// #include "reactingWallFvPatchScalarField.C"
 #include "reactingWallFvPatchScalarField.H"
-#include "wallGlobalCompositionFvPatchScalarField.C"
+// #include "wallGlobalCompositionFvPatchScalarField.C"
 #include "wallGlobalCompositionFvPatchScalarField.H"
 //#include "interfacePropertiesAR.C"
 //#include "interfacePropertiesAR.H"
@@ -97,7 +97,7 @@ int main(int argc, char *argv[])
 	int return_value   = -1;
 
 	// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
- 	Info << "setting values of bio's Concentration around patch wall to 0.1." << endl;
+ 	Info << "setting values of bio's Concentration around patch wall to 0.01." << endl;
 	
 	forAll(C_mAE.boundaryField(), patchi)
 	{

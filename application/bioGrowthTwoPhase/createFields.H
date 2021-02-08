@@ -204,45 +204,6 @@ surfaceScalarField phiD
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-/*dimensionedTensor D_glu
-(
-    transportProperties.lookup("D_glu")
-);
-
-dimensionedTensor D_DOM
-(
-    transportProperties.lookup("D_DOM")
-);
-
-dimensionedTensor D_O2
-(
-    transportProperties.lookup("D_O2")
-);
-
-dimensionedTensor D_CO2
-(
-    transportProperties.lookup("D_CO2")
-);
-
-dimensionedScalar kD_SOMDOM
-(
-    transportProperties.lookup("kD_SOMDOM")
-);*/
-
-/*dimensionedTensor D_mAE
-(
-    transportProperties.lookup("D_mAE")
-);
-
-dimensionedTensor D_mF1
-(
-    transportProperties.lookup("D_mF1")
-);
-
-dimensionedTensor D_mF2
-(
-    transportProperties.lookup("D_mF2")
-);*/
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 Info << "Reading surface masters dictionary" << endl;
