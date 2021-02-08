@@ -39,7 +39,7 @@ Description
 #include "MULES.H"
 #include "twoPhaseMixture.H"
 
-// #include "reactingWallFvPatchScalarField.C"
+#include "reactingWallFvPatchScalarField.C"
 #include "reactingWallFvPatchScalarField.H"
 // #include "wallGlobalCompositionFvPatchScalarField.C"
 #include "wallGlobalCompositionFvPatchScalarField.H"
@@ -99,7 +99,7 @@ int main(int argc, char *argv[])
 	// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
  	Info << "setting values of bio's Concentration around patch wall to 0.01." << endl;
 	
-	forAll(C_mAE.boundaryField(), patchi)
+	forAll(Surf.boundaryField(), patchi)
 	{
 		if (Surf.boundaryField()[patchi].type()=="reactingWall")
 		{
