@@ -161,8 +161,8 @@
 				//concentrationTemp_[3] = 0;				//C_CO2
 				concentrationTemp_[0] = Y[0][celli];
 				concentrationTemp_[1] = Y[1][celli];
-				concentrationTemp_[2] = Y[2][celli];				//C_O2
-				concentrationTemp_[3] = Y[3][celli];				//C_CO2
+				concentrationTemp_[2] = 0;//Y[2][celli];				//C_O2
+				concentrationTemp_[3] = 0;//Y[3][celli];				//C_CO2
 				concentrationTemp_[4] = C_mAE[celli];
 				concentrationTemp_[5] = C_mF1[celli];
 				concentrationTemp_[6] = C_mF2[celli];
@@ -248,9 +248,6 @@
 				// }
 				if (celli == 3969){cout << "concentration C_mAE = " << concentrationTemp_[4] << " in cell: " << celli << endl;
 				}
-				// cout << "concentration C_mAE = " << concentrationTemp_[4] << " in cell: " << celli << endl;
-				// cout << "concentration C_mF1 = " << concentrationTemp_[5] << " in cell: " << celli << endl;
-				// cout << "concentration C_mF2 = " << concentrationTemp_[6] << " in cell: " << celli << endl;
  // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 				double smallAmount = 1e-20;
