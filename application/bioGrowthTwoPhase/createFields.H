@@ -257,7 +257,7 @@ volScalarField Surf
 /*	double* surfConcentration_1;
 	double* surfConcentration_2;*/
 	
-	int ncells = mesh.cells().size();
+	// int ncells = mesh.cells().size();
 	//double* surfConcentration_2 = new double [ncells];
 	//double* surfArea = new double [ncells];
 
