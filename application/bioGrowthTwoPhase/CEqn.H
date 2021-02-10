@@ -246,9 +246,11 @@
 				// { 
 				// 	cout << "concentration C_mF2B = " << concentrationTemp_[6] << " in cell: " << celli << endl;
 				// }
-				cout << "concentration C_mAE = " << concentrationTemp_[4] << " in cell: " << celli << endl;
-				cout << "concentration C_mF1 = " << concentrationTemp_[5] << " in cell: " << celli << endl;
-				cout << "concentration C_mF2 = " << concentrationTemp_[6] << " in cell: " << celli << endl;
+				if (celli == 3969){cout << "concentration C_mAE = " << concentrationTemp_[4] << " in cell: " << celli << endl;
+				}
+				// cout << "concentration C_mAE = " << concentrationTemp_[4] << " in cell: " << celli << endl;
+				// cout << "concentration C_mF1 = " << concentrationTemp_[5] << " in cell: " << celli << endl;
+				// cout << "concentration C_mF2 = " << concentrationTemp_[6] << " in cell: " << celli << endl;
  // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 				double smallAmount = 1e-20;
