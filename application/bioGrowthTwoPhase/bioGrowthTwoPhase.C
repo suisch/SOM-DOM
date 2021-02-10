@@ -111,9 +111,9 @@ int main(int argc, char *argv[])
 
 			forAll(C_mAE.boundaryField()[patchi], facei)
 			{
-				C_mAE[cellOwner[facei]] = 0;
-                C_mF1[cellOwner[facei]] = 0;
-                C_mF2[cellOwner[facei]] = 0;
+				C_mAE[cellOwner[facei]] = 0.001;
+                C_mF1[cellOwner[facei]] = 0.001;
+                C_mF2[cellOwner[facei]] = 0.001;
                 C_SOM[cellOwner[facei]] = 0.10;
 			}
 		}
