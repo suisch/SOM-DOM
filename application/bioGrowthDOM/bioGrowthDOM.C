@@ -39,6 +39,7 @@ Description
 #include "reactingWallFvPatchScalarField.H"
 using namespace std;
 
+//SIS where does BRNS actually sit? online? file? 
 extern"C" {
 void invokebrns_(double *theCurArray, double *thePreArray, double *outputArray, int *numComp, 
 	double *time_step, int *boundary_flag, int *return_value, double *x_pos, double *y_pos, 
